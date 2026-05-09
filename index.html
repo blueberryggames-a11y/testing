@@ -8,25 +8,9 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* ── FULL PAGE BACKGROUND ── */
     body {
       font-family: 'Montserrat', sans-serif;
       color: #000;
-      position: relative;
-      min-height: 100vh;
-    }
-
-    /* Fixed blurred bg behind EVERYTHING */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url('rimuru.png');
-      background-size: cover;
-      background-position: center;
-      filter: brightness(0.28) blur(8px);
-      transform: scale(1.08);
-      z-index: -1;
     }
 
     /* ── HERO ── */
@@ -37,13 +21,18 @@
       overflow: hidden;
     }
 
+    /* actual image */
     .hero img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 35%;
       display: block;
+      filter: brightness(0.5) blur(3px);
+      transform: scale(1.05);
     }
+
+
 
     nav {
       position: absolute;
@@ -54,35 +43,18 @@
       gap: 12px;
       padding: 14px 20px;
       background: transparent;
-      z-index: 10;
+      z-index: 2;
     }
 
-    nav .hamburger {
-      font-size: 22px;
-      cursor: pointer;
-      color: #fff;
-      line-height: 1;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.7);
-    }
-
-    nav img.logo {
-      width: 44px;
-      height: 44px;
-      object-fit: contain;
-    }
-
-    nav span.site-name {
-      font-size: 18px;
-      font-weight: 500;
-      color: #fff;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
-    }
+    nav .hamburger { font-size: 22px; cursor: pointer; color: #fff; line-height: 1; }
+    nav img.logo { width: 44px; height: 44px; object-fit: contain; }
+    nav span.site-name { font-size: 18px; font-weight: 500; color: #fff; }
 
     /* ── TITLE ── */
     .title-section {
       text-align: center;
       padding: 52px 20px 40px;
-      border-bottom: 1px solid rgba(0,0,0,0.15);
+      border-bottom: 1px solid rgba(0,0,0,0.12);
       background: rgba(255,255,255,0.88);
     }
 
@@ -94,11 +66,7 @@
     }
 
     /* ── DESCRIPTION ── */
-    .description-wrap {
-      background: rgba(255,255,255,0.88);
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-    }
-
+    .description-wrap { background: rgba(255,255,255,0.88); }
     .description {
       text-align: center;
       padding: 42px 20px 48px;
@@ -109,16 +77,28 @@
       color: #111;
     }
 
-    /* ── GALLERY SECTION ── */
+    /* ── GALLERY ── */
     .gallery-section {
       position: relative;
       width: 100%;
       overflow: hidden;
     }
 
+    /* blurred bg behind cards */
+    .gallery-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('rimuru.png');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.28) blur(8px);
+      transform: scale(1.08);
+      z-index: 0;
+    }
+
     .gallery-cards {
       position: relative;
-      z-index: 2;
+      z-index: 1;
       display: flex;
       justify-content: center;
       gap: 14px;
@@ -133,33 +113,23 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.6);
     }
 
-    .gallery-cards .card img {
-      width: 100%;
-      display: block;
-      object-fit: cover;
-    }
+    .gallery-cards .card img { width: 100%; display: block; object-fit: cover; }
 
     .link-bar {
       position: relative;
-      z-index: 2;
+      z-index: 1;
       display: flex;
       justify-content: center;
       padding: 8px 0 28px;
     }
 
     .link-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
+      width: 46px; height: 46px; border-radius: 50%;
       background: rgba(255,255,255,0.15);
       border: 1.5px solid rgba(255,255,255,0.35);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.2s;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s;
     }
-
     .link-icon:hover { background: rgba(255,255,255,0.28); }
     .link-icon svg { width: 22px; height: 22px; fill: #fff; }
 
@@ -170,7 +140,7 @@
 </head>
 <body>
 
-  <!-- HERO -->
+  <!-- HERO with image + dark tint -->
   <div class="hero">
     <img src="rimuru.png" alt="Rimuru hero" />
     <nav>
@@ -180,20 +150,21 @@
     </nav>
   </div>
 
-  <!-- TITLE (semi-transparent white panel over the dark bg) -->
+  <!-- TITLE -->
   <div class="title-section">
     <h1>pika.solutions</h1>
   </div>
 
-  <!-- DESCRIPTION (same panel) -->
+  <!-- DESCRIPTION -->
   <div class="description-wrap">
     <p class="description">
       Welcome to pika.solutions this webpage is currently a place holder! Thanks for visiting this website. The website currently does not have a use,&nbsp; but may have one in the future.
     </p>
   </div>
 
-  <!-- GALLERY (bg shows through — dark blurred) -->
+  <!-- GALLERY -->
   <div class="gallery-section">
+    <div class="gallery-bg"></div>
     <div class="gallery-cards">
       <div class="card"><img src="rimuru.png" alt="Rimuru 1" /></div>
       <div class="card"><img src="rimuru.png" alt="Rimuru 2" /></div>
