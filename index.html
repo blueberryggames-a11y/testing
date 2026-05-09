@@ -4,220 +4,72 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pika.solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;900&display=swap" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; background: #fff; color: #000; }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #fff;
-      color: #000;
-    }
-
-    /* ── NAV ── */
     nav {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 18px;
-      background: #fff;
-      border-bottom: 1px solid #e5e5e5;
-      position: relative;
-      z-index: 10;
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 18px; background: #fff;
+      border-bottom: 1px solid #e5e5e5; position: relative; z-index: 10;
     }
+    nav .hamburger { font-size: 22px; cursor: pointer; line-height: 1; }
+    nav img.logo { width: 40px; height: 40px; object-fit: contain; }
+    nav span.site-name { font-size: 18px; font-weight: 500; color: #000; }
 
-    nav .hamburger {
-      font-size: 22px;
-      cursor: pointer;
-      line-height: 1;
-    }
+    .hero-banner { width: 100%; height: 170px; overflow: hidden; }
+    .hero-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: brightness(0.7); }
 
-    nav img.logo {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-    }
+    .title-section { text-align: center; padding: 48px 20px 36px; border-bottom: 1px solid #e0e0e0; }
+    .title-section h1 { font-size: clamp(48px, 8vw, 90px); font-weight: 900; letter-spacing: -1px; color: #000; }
 
-    nav span.site-name {
-      font-size: 18px;
-      font-weight: 500;
-      color: #000;
-    }
+    .description { text-align: center; padding: 36px 20px 40px; max-width: 800px; margin: 0 auto; font-size: 17px; line-height: 1.6; color: #111; }
 
-    /* ── HERO BANNER ── */
-    .hero-banner {
-      width: 100%;
-      height: 170px;
-      overflow: hidden;
-    }
+    .gallery-section { width: 100%; position: relative; overflow: hidden; }
+    .gallery-bg { position: absolute; inset: 0; background-image: url('rimuru.png'); background-size: cover; background-position: center; filter: brightness(0.4) blur(2px); transform: scale(1.05); }
+    .gallery-cards { position: relative; z-index: 2; display: flex; justify-content: center; gap: 18px; padding: 40px 30px 60px; }
+    .gallery-cards .card { flex: 0 0 calc(33.33% - 18px); max-width: 420px; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+    .gallery-cards .card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    .hero-banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      filter: brightness(0.7);
-    }
-
-    /* ── TITLE SECTION ── */
-    .title-section {
-      text-align: center;
-      padding: 48px 20px 36px;
-      border-bottom: 1px solid #e0e0e0;
-    }
-
-    .title-section h1 {
-      font-size: clamp(48px, 8vw, 90px);
-      font-weight: 900;
-      letter-spacing: -1px;
-      color: #000;
-    }
-
-    /* ── DESCRIPTION ── */
-    .description {
-      text-align: center;
-      padding: 36px 20px 40px;
-      max-width: 800px;
-      margin: 0 auto;
-      font-size: 17px;
-      line-height: 1.6;
-      color: #111;
-    }
-
-    /* ── IMAGE GALLERY SECTION ── */
-    .gallery-section {
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .gallery-bg {
-      position: absolute;
-      inset: 0;
-      background-image: url('rimuru.png');
-      background-size: cover;
-      background-position: center;
-      filter: brightness(0.4) blur(2px);
-      transform: scale(1.05);
-    }
-
-    .gallery-cards {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      padding: 40px 30px 60px;
-    }
-
-    .gallery-cards .card {
-      flex: 0 0 calc(33.33% - 18px);
-      max-width: 420px;
-      border-radius: 4px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    }
-
-    .gallery-cards .card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* ── LINK ICON BAR ── */
-    .link-bar {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      justify-content: center;
-      padding: 0 0 30px;
-    }
-
-    .link-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .link-icon:hover {
-      background: rgba(255,255,255,0.25);
-    }
-
-    .link-icon svg {
-      width: 20px;
-      height: 20px;
-      fill: #fff;
-    }
+    .link-bar { position: relative; z-index: 2; display: flex; justify-content: center; padding: 0 0 30px; }
+    .link-icon { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; }
+    .link-icon:hover { background: rgba(255,255,255,0.25); }
+    .link-icon svg { width: 20px; height: 20px; fill: #fff; }
 
     @media (max-width: 700px) {
-      .gallery-cards {
-        flex-direction: column;
-        align-items: center;
-        padding: 24px 16px 40px;
-      }
-      .gallery-cards .card {
-        flex: none;
-        width: 100%;
-        max-width: 100%;
-      }
+      .gallery-cards { flex-direction: column; align-items: center; padding: 24px 16px 40px; }
+      .gallery-cards .card { flex: none; width: 100%; max-width: 100%; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <span class="hamburger">&#9776;</span>
-    <img
-      class="logo"
-      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-      alt="Pikachu logo"
-    />
+    <img class="logo" src="pika.png" alt="Pikachu logo" />
     <span class="site-name">pika.solutions</span>
   </nav>
 
-  <!-- HERO BANNER -->
   <div class="hero-banner">
     <img src="rimuru.png" alt="Rimuru hero banner" />
   </div>
 
-  <!-- TITLE -->
   <div class="title-section">
     <h1>pika.solutions</h1>
   </div>
 
-  <!-- DESCRIPTION -->
   <p class="description">
     Welcome to pika.solutions this webpage is currently a place holder! Thanks for visiting this website. The website currently does not have a use,&nbsp; but may have one in the future.
   </p>
 
-  <!-- GALLERY SECTION -->
   <div class="gallery-section">
     <div class="gallery-bg"></div>
-
     <div class="gallery-cards">
-      <div class="card">
-        <img src="rimuru.png" alt="Rimuru 1" />
-      </div>
-      <div class="card">
-        <img src="rimuru.png" alt="Rimuru 2" />
-      </div>
-      <div class="card">
-        <img src="rimuru.png" alt="Rimuru 3" />
-      </div>
+      <div class="card"><img src="rimuru.png" alt="Rimuru 1" /></div>
+      <div class="card"><img src="rimuru.png" alt="Rimuru 2" /></div>
+      <div class="card"><img src="rimuru.png" alt="Rimuru 3" /></div>
     </div>
-
     <div class="link-bar">
       <div class="link-icon" title="Link">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
